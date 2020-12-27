@@ -20,8 +20,8 @@ class BasePage():
         field.send_keys(text)
 
     def go_to_cart(self):
-        view_basket_button = self.browser.find_element(*MainPageLocators.VIEW_CART_BUTTON)
-        view_basket_button.click()
+        view_cart_button = self.browser.find_element(*MainPageLocators.VIEW_CART_BUTTON)
+        view_cart_button.click()
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)

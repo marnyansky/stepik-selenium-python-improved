@@ -10,9 +10,9 @@ class CartPage(BasePage):
 
     def cart_should_be_empty(self):
         assert self.is_not_element_present(*CartPageLocators.CART_ITEM), \
-            "There is at least one item in the basket"
+            "There is at least one item in the cart"
         assert "empty" in self.browser.find_element(*CartPageLocators.CART_IS_EMPTY_MESSAGE).text, \
-            "The message informing that the basket is empty is not displayed"
+            "The message informing that the cart is empty is not displayed"
 
     def open(self):
         self.browser.get(self.url)

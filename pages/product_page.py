@@ -18,23 +18,23 @@ class ProductPage(BasePage):
         return self
 
     def product_should_be_in_cart_with_the_same_name_and_the_same_price(self):
-        expected_product_added_message = self.product_name + " has been added to your basket."
+        expected_product_added_message = self.product_name + " has been added to your cart."
         actual_product_added_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE).text
         assert expected_product_added_message == actual_product_added_message, \
-            "The product added to basket has different name"
+            "The product added to cart has different name"
 
-        expected_basket_total_message = "Your basket total is now " + self.product_price
-        actual_basket_total_message = self.browser.find_element(*ProductPageLocators.CART_TOTAL_MESSAGE).text
-        assert expected_basket_total_message == actual_basket_total_message, \
-            "The product added to basket has different price"
+        expected_cart_total_message = "Your cart total is now " + self.product_price
+        actual_cart_total_message = self.browser.find_element(*ProductPageLocators.CART_TOTAL_MESSAGE).text
+        assert expected_cart_total_message == actual_cart_total_message, \
+            "The product added to cart has different price"
 
     def remember_product_name_and_price_and_add_product_to_cart(self):
         # Sets values to global variables 'product_name' and 'product_price'
         self.product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         self.product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
 
-        add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
-        add_to_basket_button.click()
+        add_to_cart_button = self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON)
+        add_to_cart_button.click()
         return self
 
     def should_not_be_success_message(self):
