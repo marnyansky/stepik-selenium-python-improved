@@ -1,4 +1,4 @@
-import mimesis # Faker alternative
+import mimesis  # Faker alternative
 import pytest
 
 from pages.cart_page import CartPage
