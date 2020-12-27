@@ -1,5 +1,4 @@
 import math
-import time
 
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
@@ -21,7 +20,7 @@ class BasePage():
         field.send_keys(text)
 
     def go_to_cart(self):
-        view_basket_button = self.browser.find_element(*MainPageLocators.VIEW_BASKET_BUTTON)
+        view_basket_button = self.browser.find_element(*MainPageLocators.VIEW_CART_BUTTON)
         view_basket_button.click()
 
     def go_to_login_page(self):
@@ -52,11 +51,6 @@ class BasePage():
         except TimeoutException:
             return True
         return False
-
-    def open(self):
-        self.browser.get(self.url)
-        time.sleep(2) # temporary replacement of WebDriverWait methods
-        return self
 
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), \

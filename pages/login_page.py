@@ -1,8 +1,20 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait as WDW
+
 from .base_page import BasePage
 from .locators import LoginPageLocators
 
 
 class LoginPage(BasePage):
+
+    def open(self):
+        self.browser.get(self.url)
+        WDW(self.browser, 15)\
+            .until(EC.element_to_be_clickable((By.CSS_SELECTOR, "#login_form > .btn-primary")))
+        WDW(self.browser, 15)\
+            .until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[name='registration_submit']")))
+        return self
 
     def register_new_user(self, email, password):
         email_field = self.browser.find_element(*LoginPageLocators.EMAIL_FIELD)
